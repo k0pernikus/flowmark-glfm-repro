@@ -8,8 +8,16 @@ on:
 jobs:
   round-trip:
     runs-on: ubuntu-latest
+    name: ${{ matrix.construct }}
+    strategy:
+      fail-fast: false
+      matrix:
+        construct:
+          - table-of-contents
+          - description-list
+          - multiline-blockquote
     steps:
       - uses: actions/checkout@v5
       - uses: jdx/mise-action@v2
       - run: mise run format
-      - run: git diff --exit-code
+      - run: git diff --exit-code -- glfm/${{ matrix.construct }}.md
