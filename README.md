@@ -1,7 +1,7 @@
 # flowmark GLFM round-trip reproduction
 
-Three GitLab Flavored Markdown constructs do not survive a `flowmark` pass. Each file
-in `glfm/` is a minimal input for one of them.
+Three GitLab Flavored Markdown (GLFM) constructs do not survive a `flowmark` pass.
+Each file in `glfm/` is a minimal input for one of them.
 
 Pinned: `flowmark 0.7.3`, via `uvx` in the `format` task.
 
