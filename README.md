@@ -3,9 +3,9 @@
 Three GitLab Flavored Markdown (GLFM) constructs do not survive a `flowmark` pass.
 Each file in `glfm/` is a minimal input for one of them.
 
-Pinned: `flowmark 0.7.3`, via `uvx` in the `format` task.
-
 ## Run
+
+Against `flowmark 0.7.3`, the version this was reported against:
 
 ```bash
 mise install
@@ -13,7 +13,16 @@ mise run format
 git diff
 ```
 
-`git diff` shows what `flowmark` wrote.
+Against the current release, to check whether a fix has landed:
+
+```bash
+mise install
+mise run format-using-latest
+git diff
+```
+
+`git diff` shows what `flowmark` wrote. A file with no diff round-trips correctly.
+Restore the inputs between runs with `git restore glfm/`.
 
 ## Expected vs actual
 

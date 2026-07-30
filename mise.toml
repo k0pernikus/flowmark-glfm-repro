@@ -3,3 +3,6 @@ uv = "0.12.0"
 
 [tasks.format]
 run = "uvx flowmark@0.7.3 --inplace --nobackup glfm/"
+
+[tasks.format-using-latest]
+run = "uvx flowmark@latest --inplace --nobackup glfm/"
