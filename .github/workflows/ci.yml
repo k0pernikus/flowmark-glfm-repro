@@ -1,0 +1,15 @@
+name: glfm-round-trip
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  round-trip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: jdx/mise-action@v2
+      - run: mise run format
+      - run: git diff --exit-code

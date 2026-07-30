@@ -1,0 +1,5 @@
+[tools]
+uv = "0.12.0"
+
+[tasks.format]
+run = "uvx flowmark@0.7.3 --inplace --nobackup glfm/"
