@@ -1,11 +1,13 @@
 # flowmark GLFM round-trip reproduction
 
-Three GitLab Flavored Markdown (GLFM) constructs do not survive a `flowmark` pass.
-Each file in `glfm/` is a minimal input for one of them.
+Three GitLab Flavored Markdown (GLFM) constructs did not survive a `flowmark 0.7.3`
+pass ([jlevy/flowmark#67](https://github.com/jlevy/flowmark/issues/67)). Each file in
+`glfm/` is a minimal input for one of them. `flowmark 0.8.0` round-trips all three
+byte-identically, and CI now pins it, so the repository guards against a regression.
 
 ## Run
 
-Against `flowmark 0.7.3`, the version this was reported against:
+Against `flowmark 0.8.0`, the first fixed version, which CI runs:
 
 ```bash
 mise install
@@ -13,7 +15,15 @@ mise run format
 git diff
 ```
 
-Against the current release, to check whether a fix has landed:
+Against `flowmark 0.7.3`, the version this was reported against:
+
+```bash
+mise install
+mise run format-using-reported
+git diff
+```
+
+Against the current release, to check that the fix still holds:
 
 ```bash
 mise install
@@ -26,7 +36,8 @@ Restore the inputs between runs with `git restore glfm/`.
 
 ## Expected vs actual
 
-`flowmark` is expected to round-trip all three files byte-identically.
+`flowmark` is expected to round-trip all three files byte-identically. The actual
+results below are those of `flowmark 0.7.3`.
 
 ### `glfm/table-of-contents.md`
 
